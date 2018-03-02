@@ -30,6 +30,9 @@ public class WorldGenerator {
         public Room() {
             leftTop = new Position();
             rightBottom = new Position();
+            roomWidth = RANDOM.nextInt(5) + 3;
+            roomHeight = RANDOM.nextInt(5) + 3;
+            roomArea = roomHeight * roomWidth;
         }
     }
 
@@ -51,12 +54,6 @@ public class WorldGenerator {
     public static Room buildARandomRoom(Position doorForNewRoom, TETile[][] world){
 
         Room newRoom = new Room();
-        
-        //set the size of the new room
-        newRoom.roomWidth = RANDOM.nextInt(5) + 1;
-        newRoom.roomHeight = RANDOM.nextInt(5) + 1;
-        newRoom.roomArea = newRoom.roomHeight * newRoom.roomWidth;
-
         //
         Position newRoomPosition = chooseAPositionForNewRoom(doorForNewRoom, newRoom, world);
         
@@ -64,7 +61,6 @@ public class WorldGenerator {
         newRoom.leftTop = newRoomPosition;
         newRoom.rightBottom.x = newRoom.leftTop.x + newRoom.roomWidth - 1;
         newRoom.rightBottom.y = newRoom.leftTop.y + newRoom.roomHeight - 1;
-        
         return newRoom;
     }
 
@@ -112,8 +108,42 @@ public class WorldGenerator {
     }
 
 
-    //choose a position for new room
+    //choose a position for newRoom (currently, the newRoom only has its size available)
     public static Position chooseAPositionForNewRoom(Position useDoor, Room newRoom, TETile[][] world){
+
+        Position doorForNewRoom = determineDoorForNewRoom(useDoor, world);
+        int sideOfNewRoom = determineTheSideOfNewRoom(useDoor, world);
+        int offsetX = RANDOM.nextInt(newRoom.roomWidth - 2);
+        int offsetY = RANDOM.nextInt(newRoom.roomHeight - 2);
+
+        Position newRoomPosition = new Position();
+        switch (sideOfNewRoom) {
+            case 1: {
+                newRoomPosition.x = doorForNewRoom.x - offsetX;
+                newRoomPosition.y = doorForNewRoom.y - newRoom.roomHeight + 1;
+            } break;
+
+            case 2: {
+                newRoomPosition.x = doorForNewRoom.x;
+                newRoomPosition.y = doorForNewRoom.y - offsetY;
+            } break;
+
+            case 3: {
+                newRoomPosition.x = doorForNewRoom.x - offsetX;
+                newRoomPosition.y = doorForNewRoom.y;
+            } break;
+
+            case 4: {
+                newRoomPosition.x = doorForNewRoom.x - newRoom.roomWidth + 1;
+                newRoomPosition.y = doorForNewRoom.y - offsetY;
+            } break;
+        }
+
+        return newRoomPosition;
+    }
+
+    // determine the side of the newRoom relative to the useDoor
+    public static int determineTheSideOfNewRoom (Position useDoor, TETile[][] world) {
         //determine the position of the used door, int side: 1:top, 2:right, 3:bottom, 4: left
         int side = 0;
         int x = useDoor.x;
@@ -122,14 +152,40 @@ public class WorldGenerator {
         if (world[x - 1][y] == Tileset.NOTHING) side = 4;
         if (world[x][y + 1] == Tileset.NOTHING) side = 3;
         if (world[x][y - 1] == Tileset.NOTHING) side = 1;
+        return side;
 
-        //determine the position of the new room according to the
-
-
-
-        return new Position();
     }
 
+    public static Position determineDoorForNewRoom (Position useDoor, TETile[][] world){
+
+        Position doorForNewRoom = new Position();
+
+        //set the position of the door for new room the same as the door to use, will shift in the following according to the side of the useDoor
+        doorForNewRoom.x = useDoor.x;
+        doorForNewRoom.y = useDoor.y;
+
+        int side = determineTheSideOfNewRoom(useDoor, world);
+        //determine the position of the door for new room according to the door side
+        switch (side) {
+            case 1: {
+                doorForNewRoom.y -= 1;
+            } break;
+
+            case 2: {
+                doorForNewRoom.x += 1;
+            } break;
+
+            case 3: {
+                doorForNewRoom.y += 1;
+            } break;
+
+            case 4: {
+                doorForNewRoom.x -= 1;
+            } break;
+        }
+
+        return doorForNewRoom;
+    }
     //putLockedDoor
     public static void putLockedDoor(Room firstRoom) {
 
