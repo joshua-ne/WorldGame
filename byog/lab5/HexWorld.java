@@ -53,7 +53,7 @@ public class HexWorld {
     }
 
 
-    public static void addHexagon (TETile [][] world, Position p, int width, TETile t) {
+    private static void addHexagon (TETile [][] world, Position p, int width, TETile t) {
         for (int i = 1; i < 2*width + 1; i++){
             drawLine(world, rowPosition(p,width,i), numToDraw(width,i), t);
         }
@@ -124,13 +124,10 @@ public class HexWorld {
     public static void main (String[] args) {
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
         int width = 4;
-
         WIDTH = calSize(width)[1] *2;
         HEIGHT = calSize(width)[0] * 2;
-
         TERenderer ter = new TERenderer();
         ter.initialize(WIDTH, HEIGHT);
-
 
         // initialize tiles
         TETile[][] world = new TETile[WIDTH][HEIGHT];
@@ -142,10 +139,8 @@ public class HexWorld {
 
         Position firstPoint = calFirstPoint(world,width);
 
-
-        int numToDraw;
-        //add Hexagons to the world
         for (int i = 0; i < 5; i++) {
+            int numToDraw;
             switch (i) {
                 case 0: numToDraw = 3;break;
                 case 1: numToDraw = 4;break;
@@ -155,8 +150,6 @@ public class HexWorld {
             }
             drawColumn(world,columnStartPosition(firstPoint,i, width), numToDraw, width);
         }
-
-
         // draws the world to the screen
         ter.renderFrame(world);
     }

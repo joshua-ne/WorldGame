@@ -1,15 +1,10 @@
-package byog.lab5;
+package byog.Core;
 
 import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
 
-/**
- *  Draws a world that is mostly empty except for a small region.
- */
-public class BoringWorldDemo {
-    private static final int WIDTH = 60;
-    private static final int HEIGHT = 30;
+public class WorldGenerator_test extends WorldGenerator{
 
     public static void main(String[] args) {
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
@@ -24,16 +19,17 @@ public class BoringWorldDemo {
             }
         }
 
-        // fills in a block 14 tiles wide by 4 tiles tall
-        for (int x = 20; x < 35; x += 1) {
-            for (int y = 5; y < 10; y += 1) {
-                world[x][y] = Tileset.WALL;
-            }
-        }
+        //pick a proper start position to start
+        WorldGenerator.Position startPoint = pickStartPoint(world);
+
+        System.out.println(startPoint.x);
+        System.out.println(startPoint.y);
+
+
+        addOneMoreRoom(startPoint, world);
+
 
         // draws the world to the screen
         ter.renderFrame(world);
     }
-
-
 }
