@@ -89,11 +89,11 @@ public class TERenderer {
         StdDraw.clear(new Color(0, 0, 0));
         for (int x = 0; x < numXTiles; x += 1) {
             for (int y = 0; y < numYTiles; y += 1) {
-                if (world[x][y] == null) {
+                if (world[x][numYTiles-1-y] == null) {
                     throw new IllegalArgumentException("Tile at position x=" + x + ", y=" + y
                             + " is null.");
                 }
-                world[x][y].draw(x + xOffset, y + yOffset);
+                world[x][numYTiles-1-y].draw(x + xOffset, y + yOffset);
             }
         }
         StdDraw.show();

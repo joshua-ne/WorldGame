@@ -6,12 +6,16 @@ import byog.TileEngine.Tileset;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.HashMap;
+
 
 public class WorldGenerator {
-    public static final int WIDTH = 60;
-    public static final int HEIGHT = 30;
-    public static final int AREA = WIDTH * HEIGHT;
-    public static ArrayList<Position> availableDoors; // store the available positions for new rooms; updated whenever a new room is built
+    public static  int WIDTH = 60;
+    public static  int HEIGHT = 30;
+    public static  int AREA = WIDTH * HEIGHT;
+    public static HashMap<Room, ArrayList<Position>> availableDoors = new HashMap<>();
+
+    //public static ArrayList<Position> availableDoors; // store the available positions for new rooms; updated whenever a new room is built
     public static int occupiedArea;
 
     private static final long SEED = 2873123;
@@ -24,6 +28,13 @@ public class WorldGenerator {
             this.x = x;
             this.y = y;
         }
+
+        @Override
+        public String toString() {
+
+            String strPosition = "(" + x + ", " + y + ")";
+            return strPosition;
+        }
     }
 
     //Room class with basic information
@@ -31,6 +42,7 @@ public class WorldGenerator {
         public int roomWidth, roomHeight, roomArea;
         public Position leftTop, rightBottom, startingDoor;
         public ArrayList<Position> RoomAvailableDoors;
+        public boolean isLegit;
         public Room() {
             leftTop = new Position();
             rightBottom = new Position();
@@ -38,6 +50,13 @@ public class WorldGenerator {
             roomWidth = RANDOM.nextInt(5) + 3;
             roomHeight = RANDOM.nextInt(5) + 3;
             roomArea = roomHeight * roomWidth;
+            isLegit = false;
+        }
+
+        @Override
+        public String toString() {
+            String roomString = "LeftTop: (" + this.leftTop.x +" "+ this.leftTop.y+")" + "; RightBottom: (" + this.rightBottom.x + " "+this.rightBottom.y+")"+"; size: " + this.roomHeight + " x " + this.roomWidth;
+            return roomString;
         }
     }
 
@@ -56,11 +75,11 @@ public class WorldGenerator {
     }
 
     //build a random room instance, determining its size, position, doors;
-    public static Room buildARandomRoom(Position doorForNewRoomA, TETile[][] world){
+    public static Room buildARandomRoom(Room roomToBeConnected, Position doorForNewRoomA, TETile[][] world){
 
         Room newRoom = new Room();
         //
-        Position newRoomPosition = chooseAPositionForNewRoom(doorForNewRoomA, newRoom, world);
+        Position newRoomPosition = chooseAPositionForNewRoom(roomToBeConnected, doorForNewRoomA, newRoom, world);
         
         //set the position of the new room
         newRoom.leftTop = newRoomPosition;
@@ -68,7 +87,7 @@ public class WorldGenerator {
         newRoom.rightBottom.y = newRoom.leftTop.y + newRoom.roomHeight - 1;
 
         //set the potential future doors
-        newRoom.RoomAvailableDoors = setRandomAvailableDoors(newRoom);
+        //newRoom.RoomAvailableDoors = setRandomAvailableDoors(newRoom);
         return newRoom;
     }
 
@@ -76,8 +95,11 @@ public class WorldGenerator {
     // deploy the room to the word after built
     public static void deployRoom(Room newRoom, TETile[][] world) {
 
+        //System.out.println(newRoom);
         for (int x = newRoom.leftTop.x; x < newRoom.leftTop.x + newRoom.roomWidth; x += 1) {
             for (int y = newRoom.leftTop.y; y < newRoom.leftTop.y + newRoom.roomHeight; y += 1) {
+
+
 
                 if (x == newRoom.leftTop.x || x == newRoom.rightBottom.x || y == newRoom.leftTop.y || y == newRoom.rightBottom.y) {
                     world[x][y] = Tileset.WALL;
@@ -86,8 +108,12 @@ public class WorldGenerator {
                 }
             }
         }
+        //world[newRoom.startingDoor.x][newRoom.startingDoor.y] = Tileset.FLOOR;
+        //world[newRoom.leftTop.x][newRoom.leftTop.y] = Tileset.WATER;
+        //world[newRoom.rightBottom.x][newRoom.rightBottom.y] = Tileset.TREE;
 
-        world[newRoom.startingDoor.x][newRoom.startingDoor.y] = Tileset.FLOOR;
+
+
     }
 
     public static ArrayList<Position> setRandomAvailableDoors(Room newRoom) {
@@ -110,11 +136,13 @@ public class WorldGenerator {
                 newAvailableDoors.add(doors[i]);
             }
         }
+        //System.out.println("check newAvailableDoors' adding:" + newAvailableDoors);
         return newAvailableDoors;
     }
 
-    public static void updateAvailableDoors(ArrayList<Position> newAvailableDoors) {
-        availableDoors.addAll(newAvailableDoors);
+    public static void updateAvailableDoors(Room newRoom, ArrayList<Position> newAvailableDoors) {
+        //availableDoors.addAll(newAvailableDoors);
+        availableDoors.put(newRoom, newAvailableDoors);
     }
 
     //check the legitimacy of a room in the given world
@@ -123,9 +151,17 @@ public class WorldGenerator {
         for (int x = newRoom.leftTop.x; x < newRoom.leftTop.x + newRoom.roomWidth; x += 1) {
             for (int y = newRoom.leftTop.y; y < newRoom.leftTop.y + newRoom.roomHeight; y += 1) {
 
+                try {
+                    TETile ti = world[x][y];
+
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    //System.out.println("x = " + x);
+                    //System.out.println("y = " + y);
+                    return false;
+                }
+
                 if (world[x][y] != Tileset.NOTHING) {
-                    System.out.println("judged as false");
-                    deployRoom(newRoom, world);
+                    //System.out.println("judged as false");
 
                     return false;
                 }
@@ -135,27 +171,39 @@ public class WorldGenerator {
     }
 
     //choose a door for new room from the list of available doors; open the door; undate the available doors list
-    public static Position chooseDoorForNewRoomAndOpenTheDoor(TETile[][] world) {
+    public static Room chooseRoomToBeConnected (TETile[][] world) {
 
-        //randomly choose a door
-        int doorNum = RANDOM.nextInt(availableDoors.size());
-        Position doorForNewRoomA = availableDoors.remove(doorNum);
+        //randomly choose a room to connect
 
-        //open the door
-        world[doorForNewRoomA.x][doorForNewRoomA.y] = Tileset.FLOOR;
+        //System.out.println("the number of rooms available to be connected: " + availableDoors.size());
+        ArrayList<Room> roomsCanBeConnected = new ArrayList<Room>(availableDoors.keySet());
+        int roomNum = RANDOM.nextInt(roomsCanBeConnected.size());
+        Room roomToBeConnected = roomsCanBeConnected.get(roomNum);
+        return roomToBeConnected;
+    }
+
+    public static Position chooseDoorForNewRoom (Room roomToBeConnected, TETile[][] world) {
+        ArrayList<Position> availableDoorsForA = availableDoors.get(roomToBeConnected);
+        //System.out.println(availableDoorsForA);
+        int doorNum = RANDOM.nextInt(availableDoorsForA.size());
+
+        Position doorForNewRoomA = new Position();
+        doorForNewRoomA = availableDoorsForA.remove(doorNum);
+
+        if (availableDoorsForA.size() == 0) availableDoors.remove(roomToBeConnected);
 
         return doorForNewRoomA;
     }
 
 
     //choose a position for newRoom (currently, the newRoom only has its size available)
-    public static Position chooseAPositionForNewRoom(Position doorForNewRoomA, Room newRoom, TETile[][] world){
+    public static Position chooseAPositionForNewRoom(Room roomToBeConnected, Position doorForNewRoomA, Room newRoom, TETile[][] world){
 
-        Position doorForNewRoomB = determineDoorForNewRoomB(doorForNewRoomA, world);
+        Position doorForNewRoomB = determineDoorForNewRoomB(roomToBeConnected, doorForNewRoomA, world);
         newRoom.startingDoor = doorForNewRoomB;
-        int sideOfNewRoom = determineTheSideOfNewRoom(doorForNewRoomA, world);
-        int offsetX = RANDOM.nextInt(newRoom.roomWidth - 2);
-        int offsetY = RANDOM.nextInt(newRoom.roomHeight - 2);
+        int sideOfNewRoom = determineTheSideOfNewRoom(roomToBeConnected, doorForNewRoomA, world);
+        int offsetX = RANDOM.nextInt(newRoom.roomWidth - 2)+ 1;
+        int offsetY = RANDOM.nextInt(newRoom.roomHeight - 2)+ 1;
 
         Position newRoomPosition = new Position();
         switch (sideOfNewRoom) {
@@ -184,20 +232,26 @@ public class WorldGenerator {
     }
 
     // determine the side of the newRoom relative to the doorForNewRoomA
-    public static int determineTheSideOfNewRoom (Position doorForNewRoomA, TETile[][] world) {
+    public static int determineTheSideOfNewRoom (Room roomToBeConnected, Position doorForNewRoomA, TETile[][] world) {
         //determine the position of the used door, int side: 1:top, 2:right, 3:bottom, 4: left
+
         int side = 0;
         int x = doorForNewRoomA.x;
         int y = doorForNewRoomA.y;
-        if (world[x + 1][y] == Tileset.NOTHING) side = 2;
-        if (world[x - 1][y] == Tileset.NOTHING) side = 4;
-        if (world[x][y + 1] == Tileset.NOTHING) side = 3;
-        if (world[x][y - 1] == Tileset.NOTHING) side = 1;
+
+        if (y == roomToBeConnected.leftTop.y) side = 1;
+        if (y == roomToBeConnected.rightBottom.y) side = 3;
+        if (x == roomToBeConnected.leftTop.x) side = 4;
+        if (x == roomToBeConnected.rightBottom.x) side = 2;
+
+        if (side == 0) {
+            System.out.println("Warning: Door to be connected is not on the room to be connected. Check determineTheSideOfNewRoom function!!!");
+        }
         return side;
 
     }
 
-    public static Position determineDoorForNewRoomB(Position doorForNewRoomA, TETile[][] world){
+    public static Position determineDoorForNewRoomB(Room roomToBeConnected, Position doorForNewRoomA, TETile[][] world){
 
         Position doorForNewRoomB = new Position();
 
@@ -205,7 +259,7 @@ public class WorldGenerator {
         doorForNewRoomB.x = doorForNewRoomA.x;
         doorForNewRoomB.y = doorForNewRoomA.y;
 
-        int side = determineTheSideOfNewRoom(doorForNewRoomA, world);
+        int side = determineTheSideOfNewRoom(roomToBeConnected, doorForNewRoomA, world);
         //determine the position of the door for new room according to the door side
         switch (side) {
             case 1: {
@@ -228,7 +282,19 @@ public class WorldGenerator {
         return doorForNewRoomB;
     }
     //putLockedDoor
-    public static void putLockedDoor(Room firstRoom) {
+    public static void putLockedDoor(TETile[][] world) {
+
+        while (true) {
+            int x = RANDOM.nextInt(WIDTH-2)+1;
+            int y = RANDOM.nextInt(HEIGHT-2)+1;
+            if (world[x][y] != Tileset.WALL) continue;
+            Boolean accessible = (world[x+1][y] == Tileset.FLOOR || world[x-1][y] == Tileset.FLOOR ||world[x][y+1] == Tileset.FLOOR ||world[x][y-1] == Tileset.FLOOR);
+            if (accessible) {
+                world[x][y] = Tileset.LOCKED_DOOR;
+                break;
+            }
+        }
+
 
     }
 
@@ -243,30 +309,58 @@ public class WorldGenerator {
         //set the potential future doors
         ArrayList<Position> newAvailableDoors = setRandomAvailableDoors(newRoom);
         newRoom.RoomAvailableDoors = newAvailableDoors;
-        updateAvailableDoors(newAvailableDoors);
+        updateAvailableDoors(newRoom, newAvailableDoors);
+        //newRoom.startingDoor.x = newRoom.leftTop.x+1;
+        //newRoom.startingDoor.y = newRoom.leftTop.y+1;
 
         deployRoom(newRoom,world);
+        //System.out.println(newRoom);
+
+        //ter.renderFrame(world);
+
+        occupiedArea += newRoom.roomArea;
+
 
         return newRoom;
     }
     //add one more room to the world
-    public static Room addOneMoreRoom(Position doorForNewRoomA, TETile[][] world) {
+    public static Room addOneMoreRoom(TETile[][] world) {
 
         // build a room, check it legitimacy; continue to build new ones until legitimacy is true
-        Room newRoom = buildARandomRoom(doorForNewRoomA, world);
-        while (!checkLegitimacyOfRoom(newRoom, world)){
-            //System.out.println("hhh");
+        Room roomToBeConnected = chooseRoomToBeConnected(world);
+        Position doorForNewRoomA = chooseDoorForNewRoom(roomToBeConnected, world);
 
-            newRoom = buildARandomRoom(doorForNewRoomA, world);
-            break;
+        Room newRoom = buildARandomRoom(roomToBeConnected, doorForNewRoomA, world);
+        newRoom.isLegit = checkLegitimacyOfRoom(newRoom,world);
+        while (availableDoors.size()>0 && !newRoom.isLegit){
+            //System.out.println("hhh");
+            roomToBeConnected = chooseRoomToBeConnected(world);
+
+            doorForNewRoomA = chooseDoorForNewRoom(roomToBeConnected, world);
+            newRoom = buildARandomRoom(roomToBeConnected, doorForNewRoomA, world);
+            newRoom.isLegit = checkLegitimacyOfRoom(newRoom,world);
+            //break;
+
         }
 
-        //deploy the room to the world
-        deployRoom(newRoom,world);
+        // 确保最后一次因为availableDoors.size() == 0 的情况退出来的时候，不要对newRoom进行deploy
+        if (newRoom.isLegit) {
+            //open doorA
+            world[doorForNewRoomA.x][doorForNewRoomA.y] = Tileset.FLOOR;
 
-        ArrayList<Position> newAvailableDoors = setRandomAvailableDoors(newRoom);
-        updateAvailableDoors(newAvailableDoors);
-        return newRoom;
+            //deploy the room to the world
+            deployRoom(newRoom,world);
+
+            //open doorB
+            world[newRoom.startingDoor.x][newRoom.startingDoor.y] = Tileset.FLOOR;
+
+            ArrayList<Position> newAvailableDoors = setRandomAvailableDoors(newRoom);
+            updateAvailableDoors(newRoom, newAvailableDoors);
+            occupiedArea += newRoom.roomArea;
+            return newRoom;
+        }
+
+        return null;
     }
 
 
@@ -285,23 +379,27 @@ public class WorldGenerator {
 
         //Initialize occupied area and available doors
         occupiedArea = 0;
-        availableDoors = new ArrayList<Position>();
+        availableDoors = new HashMap<>();
 
         //pick a proper start position to start
         Position startPoint = pickStartPoint(world);
 
         //place the first room at the start position and put the locked door
         Room firstRoom = addFirstRoom(startPoint, world);
-        putLockedDoor(firstRoom);
-        ter.renderFrame(world);
 
         //when coverage < 0.8 add more rooms
-        while (checkCoverage(world) < 0.8){
-            Position doorForNewRoom = chooseDoorForNewRoomAndOpenTheDoor(world);
-            addOneMoreRoom(doorForNewRoom, world);
-            break;
+        int roomNum = 1;
+
+        while (availableDoors.size() > 0 && checkCoverage(world) < 0.7){
+            Room newRoom = addOneMoreRoom(world);
+            //System.out.println(newRoom);
+            //ter.renderFrame(world);
+            roomNum += 1;
+            //System.out.println("number of available doors: " + availableDoors.size());
         }
 
+        putLockedDoor(world);
+        System.out.println(roomNum + " rooms added to the world!");
         // draws the world to the screen
         ter.renderFrame(world);
     }

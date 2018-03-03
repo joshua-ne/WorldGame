@@ -5,6 +5,7 @@ import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class WorldGenerator_test extends WorldGenerator{
 
@@ -20,18 +21,23 @@ public class WorldGenerator_test extends WorldGenerator{
                 world[x][y] = Tileset.NOTHING;
             }
         }
-        availableDoors = new ArrayList<>();
+
+        //Initialize occupied area and available doors
+        occupiedArea = 0;
+        availableDoors = new HashMap<>();
+
         //pick a proper start position to start
-        WorldGenerator.Position startPoint = pickStartPoint(world);
+        Position startPoint = pickStartPoint(world);
 
-        Room firstRoom = addFirstRoom(startPoint, world);
-        System.out.println(firstRoom.RoomAvailableDoors);
-        for (int i = 0; i < firstRoom.RoomAvailableDoors.size(); i++){
-            world[firstRoom.RoomAvailableDoors.get(i).x][firstRoom.RoomAvailableDoors.get(i).y] = Tileset.FLOWER;
-        }
-
-
-        // draws the world to the screen
+        System.out.println(startPoint);
         ter.renderFrame(world);
+
+        //place the first room at the start position and put the locked door
+        Room firstRoom = addFirstRoom(startPoint, world);
+        ter.renderFrame(world);
+
+        //putLockedDoor(firstRoom);
+
+
     }
 }
