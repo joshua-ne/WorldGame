@@ -4,19 +4,50 @@ import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.HashMap;
 
 
 public class WorldGenerator {
-    public static  int WIDTH = 60;
-    public static  int HEIGHT = 30;
+    public static  int WIDTH;
+    public static  int HEIGHT;
     public static  int AREA = WIDTH * HEIGHT;
     public static HashMap<Room, ArrayList<Position>> availableDoors = new HashMap<>();
     public static int occupiedArea;
-    private static final long SEED = 2873123;
-    private static final Random RANDOM = new Random();
+    private static Random RANDOM = new Random();
+
+
+    public void BuildAWorld (int seed, TETile[][] world){
+        WIDTH = world.length;
+        HEIGHT = world[0].length;
+        RANDOM = new Random(seed);
+
+        // initialize tiles
+        for (int x = 0; x < WIDTH; x += 1) {
+            for (int y = 0; y < HEIGHT; y += 1) {
+                world[x][y] = Tileset.NOTHING;
+            }
+        }
+
+        //Initialize occupied area and available doors
+        occupiedArea = 0;
+        availableDoors = new HashMap<>();
+
+        //pick a proper start position to start
+        Position startPoint = pickStartPoint(world);
+
+        //place the first room at the start position and put the locked door
+        addFirstRoom(startPoint, world);
+
+        while (availableDoors.size() > 0 ){
+            addOneMoreRoom(world);
+        }
+        putLockedDoor(world);
+        putPlayer(world);
+
+    }
 
     public static class Position {
         public int x, y;
@@ -112,7 +143,6 @@ public class WorldGenerator {
             System.out.println("Warning: Door to be connected is not on the room to be connected. Check determineTheSideOfNewRoom function!!!");
         }
         return side;
-
     }
 
     public static Position determineDoorForNewRoomB(Room roomToBeConnected, Position doorForNewRoomA, TETile[][] world){
@@ -355,49 +385,18 @@ public class WorldGenerator {
                 break;
             }
         }
-
-
     }
 
-
-    public static void main(String[] args) {
-        // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
-        TERenderer ter = new TERenderer();
-        ter.initialize(WIDTH, HEIGHT);
-
-        // initialize tiles
-        TETile[][] world = new TETile[WIDTH][HEIGHT];
-        for (int x = 0; x < WIDTH; x += 1) {
-            for (int y = 0; y < HEIGHT; y += 1) {
-                world[x][y] = Tileset.NOTHING;
+    public static void putPlayer(TETile[][] world){
+        while (true) {
+            int x = RANDOM.nextInt(WIDTH-2)+1;
+            int y = RANDOM.nextInt(HEIGHT-2)+1;
+            if (world[x][y] != Tileset.WALL) continue;
+            Boolean accessible = (world[x+1][y] == Tileset.FLOOR || world[x-1][y] == Tileset.FLOOR ||world[x][y+1] == Tileset.FLOOR ||world[x][y-1] == Tileset.FLOOR);
+            if (accessible) {
+                world[x][y] = Tileset.PLAYER;
+                break;
             }
         }
-
-        //Initialize occupied area and available doors
-        occupiedArea = 0;
-        availableDoors = new HashMap<>();
-
-        //pick a proper start position to start
-        Position startPoint = pickStartPoint(world);
-
-        //place the first room at the start position and put the locked door
-        Room firstRoom = addFirstRoom(startPoint, world);
-
-        //set a counter for the number of rooms
-        int roomNum = 1;
-
-        while (availableDoors.size() > 0 && checkCoverage(world) < 0.9){
-            Room newRoom = addOneMoreRoom(world);
-            //System.out.println(newRoom);
-            //ter.renderFrame(world);
-            roomNum += 1;
-            //System.out.println("number of available doors: " + availableDoors.size());
-        }
-
-        putLockedDoor(world);
-
-        System.out.println(roomNum + " rooms added to the world!");
-        // draws the world to the screen
-        ter.renderFrame(world);
     }
 }
