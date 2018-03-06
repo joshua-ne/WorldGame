@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="638dc783-22a7-44aa-8bcc-adbc8aacfc8c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/byog/Core/tests/inputParser_test.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/Test_Game.java" afterPath="$PROJECT_DIR$/byog/Core/tests/Test_Game.java" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/WorldGenerator.java" afterPath="$PROJECT_DIR$/byog/Core/WorldGenerator.java" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/WorldGenerator_test.java" afterPath="$PROJECT_DIR$/byog/Core/tests/WorldGenerator_test.java" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/playWithInputString_helper.java" afterPath="$PROJECT_DIR$/byog/Core/InputParser.java" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/.idea/workspace.xml" afterPath="$PROJECT_DIR$/out/production/proj2/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/byog/Core/Test_Game.class" afterPath="$PROJECT_DIR$/out/production/proj2/byog/Core/Test_Game.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/byog/Core/WorldGenerator.class" afterPath="$PROJECT_DIR$/out/production/proj2/byog/Core/WorldGenerator.class" />
-    </list>
+    <list default="true" id="638dc783-22a7-44aa-8bcc-adbc8aacfc8c" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -84,13 +73,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorldGenerator_test.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WorldGenerator_test.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/byog/Core/tests/WorldGenerator_test.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
               <caret line="13" column="69" lean-forward="false" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Schedule.jpg" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Schedule.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -466,7 +462,7 @@
       <workItem from="1520042483538" duration="20862000" />
       <workItem from="1520267460595" duration="25000" />
       <workItem from="1520269132204" duration="10322000" />
-      <workItem from="1520310585526" duration="2604000" />
+      <workItem from="1520310585526" duration="2824000" />
     </task>
     <servers />
   </component>
@@ -488,7 +484,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77986000" />
+    <option name="totallyTimeSpent" value="78206000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -957,7 +953,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Schedule.jpg" />
     <entry file="file://$PROJECT_DIR$/byog/Core/WorldGenerator_test_2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-173">
@@ -1037,6 +1032,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/byog/Core/tests/WorldGenerator_test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="13" column="69" lean-forward="false" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/byog/Core/WorldGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1062,12 +1065,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/byog/Core/tests/WorldGenerator_test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="13" column="69" lean-forward="false" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/Schedule.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
   </component>
