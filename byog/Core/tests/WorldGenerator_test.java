@@ -1,5 +1,6 @@
-package byog.Core;
+package byog.Core.tests;
 
+import byog.Core.WorldGenerator;
 import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
@@ -7,7 +8,7 @@ import byog.TileEngine.Tileset;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class WorldGenerator_test extends WorldGenerator{
+public class WorldGenerator_test extends WorldGenerator {
 
     public static void main(String[] args) {
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT

@@ -1,8 +1,9 @@
-package byog.Core;
+package byog.Core.tests;
 
+import byog.Core.InputParser;
+import byog.Core.WorldGenerator;
 import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
-import static byog.Core.playWithInputString_helper.*;
 
 public class Test_Game {
     //instantiate tools, may need to delete later
@@ -20,14 +21,11 @@ public class Test_Game {
         // drawn if the same inputs had been given to playWithKeyboard().
 
         //parse the input String
-        int seed = extractSeed(input);
-        boolean isNew = isNew(input);
-        String moves = extractMoves(input);
-        boolean save = saveOrNot(input);
+        InputParser p = new InputParser(input);
 
         //initialize the world
         TETile[][] finalWorldFrame = new TETile[WIDTH][HEIGHT];
-        wg.BuildAWorld(seed, finalWorldFrame);
+        wg.BuildAWorld(p.seed, finalWorldFrame);
         return finalWorldFrame;
     }
 

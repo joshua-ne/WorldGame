@@ -19,7 +19,7 @@ public class WorldGenerator {
     private static Random RANDOM = new Random();
 
 
-    public void BuildAWorld (int seed, TETile[][] world){
+    public void BuildAWorld (long seed, TETile[][] world){
         WIDTH = world.length;
         HEIGHT = world[0].length;
         RANDOM = new Random(seed);
