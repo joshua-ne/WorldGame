@@ -1,6 +1,5 @@
 package byog.Core;
 
-import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
 
@@ -379,7 +378,7 @@ public class WorldGenerator {
             int x = RANDOM.nextInt(WIDTH-2)+1;
             int y = RANDOM.nextInt(HEIGHT-2)+1;
             if (newWorld.worldMap[x][y] != Tileset.WALL) continue;
-            Boolean accessible = (newWorld.worldMap[x+1][y] == Tileset.FLOOR || newWorld.worldMap[x-1][y] == Tileset.FLOOR ||newWorld.worldMap[x][y+1] == Tileset.FLOOR ||newWorld.worldMap[x][y-1] == Tileset.FLOOR);
+            Boolean accessible = (newWorld.worldMap[x+1][y].equals(Tileset.FLOOR) || newWorld.worldMap[x-1][y].equals(Tileset.FLOOR) ||newWorld.worldMap[x][y+1].equals(Tileset.FLOOR) ||newWorld.worldMap[x][y-1].equals(Tileset.FLOOR));
             if (accessible) {
                 newWorld.worldMap[x][y] = Tileset.LOCKED_DOOR;
                 newWorld.lockedDoorPosition.x = x;
@@ -393,9 +392,9 @@ public class WorldGenerator {
         while (true) {
             int x = RANDOM.nextInt(WIDTH-2)+1;
             int y = RANDOM.nextInt(HEIGHT-2)+1;
-            if (newWorld.worldMap[x][y] != Tileset.WALL) continue;
-            Boolean accessible = (newWorld.worldMap[x+1][y] == Tileset.FLOOR || newWorld.worldMap[x-1][y] == Tileset.FLOOR ||newWorld.worldMap[x][y+1] == Tileset.FLOOR ||newWorld.worldMap[x][y-1] == Tileset.FLOOR);
-            if (accessible) {
+            //if (newWorld.worldMap[x][y] != Tileset.WALL) continue;
+            //Boolean accessible = (newWorld.worldMap[x+1][y] == Tileset.FLOOR || newWorld.worldMap[x-1][y] == Tileset.FLOOR ||newWorld.worldMap[x][y+1] == Tileset.FLOOR ||newWorld.worldMap[x][y-1] == Tileset.FLOOR);
+            if (newWorld.worldMap[x][y].equals(Tileset.FLOOR)) {
                 newWorld.worldMap[x][y] = Tileset.PLAYER;
                 newWorld.playerPosition.x = x;
                 newWorld.playerPosition.y = y;

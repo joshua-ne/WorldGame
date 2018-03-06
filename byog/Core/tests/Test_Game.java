@@ -13,9 +13,9 @@ public class Test_Game extends Game{
         TERenderer ter = new TERenderer();
         Test_Game game = new Test_Game();
         ter.initialize(WIDTH, HEIGHT);
-        TETile[][] worldState = game.playWithInputString("N294899038592WASDDWSASDWSAW:Q");
-        //TETile[][] worldState = game.playWithInputString("LWASDDWSASDWSAW");
-        System.out.println(TETile.toString(worldState));
+        //TETile[][] worldState = game.playWithInputString("N294899038592DDS:Q");
+        TETile[][] worldState = game.playWithInputString("LDDDDDDD");
+        //System.out.println(TETile.toString(worldState));
         ter.renderFrame(worldState);
     }
 }

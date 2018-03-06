@@ -2,30 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="638dc783-22a7-44aa-8bcc-adbc8aacfc8c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/byog/Core/Utils.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/byog/Core/World.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/byog/Data/savedGame.data" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/Game.java" afterPath="$PROJECT_DIR$/byog/Core/Game.java" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/InputParser.java" afterPath="$PROJECT_DIR$/byog/Core/InputParser.java" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/Main.java" afterPath="$PROJECT_DIR$/byog/Core/Main.java" />
+      <change beforePath="$PROJECT_DIR$/byog/Core/Utils.java" afterPath="$PROJECT_DIR$/byog/Core/Utils.java" />
       <change beforePath="$PROJECT_DIR$/byog/Core/WorldGenerator.java" afterPath="$PROJECT_DIR$/byog/Core/WorldGenerator.java" />
       <change beforePath="$PROJECT_DIR$/byog/Core/tests/Test_Game.java" afterPath="$PROJECT_DIR$/byog/Core/tests/Test_Game.java" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/tests/WorldGenerator_test.java" afterPath="$PROJECT_DIR$/byog/Core/tests/WorldGenerator_test.java" />
-      <change beforePath="$PROJECT_DIR$/byog/Core/tests/inputParser_test.java" afterPath="$PROJECT_DIR$/byog/Core/tests/inputParser_test.java" />
-      <change beforePath="$PROJECT_DIR$/byog/TileEngine/TETile.java" afterPath="$PROJECT_DIR$/byog/TileEngine/TETile.java" />
-      <change beforePath="$PROJECT_DIR$/design/Design.pptx" afterPath="$PROJECT_DIR$/design/Design.pptx" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/.idea/workspace.xml" afterPath="$PROJECT_DIR$/out/production/proj2/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/111.pptx" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/Schedule.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/byog/Core/Game.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/byog/Core/InputParser.class" afterPath="$PROJECT_DIR$/out/production/proj2/byog/Core/InputParser.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/byog/Core/Main.class" afterPath="$PROJECT_DIR$/out/production/proj2/byog/Core/Main.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/byog/Core/Test_Game.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/byog/Core/WorldGenerator.class" afterPath="$PROJECT_DIR$/out/production/proj2/byog/Core/WorldGenerator.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/byog/Core/WorldGenerator_test.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/byog/Core/inputParser_test.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/proj2/byog/TileEngine/TETile.class" afterPath="$PROJECT_DIR$/out/production/proj2/byog/TileEngine/TETile.class" />
+      <change beforePath="$PROJECT_DIR$/byog/Data/savedGame.data" afterPath="$PROJECT_DIR$/byog/Data/savedGame.data" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Test_Game.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Test_Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/byog/Core/tests/Test_Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="225">
+              <caret line="15" column="10" lean-forward="false" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,10 +51,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Tileset.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/byog/TileEngine/Tileset.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="41" lean-forward="false" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/byog/Core/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
+            <state relative-caret-position="371">
               <caret line="52" column="35" lean-forward="true" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -83,12 +73,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorldGenerator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/byog/Core/Utils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1065">
+              <caret line="71" column="22" lean-forward="false" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WorldGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/byog/Core/WorldGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="29" column="58" lean-forward="true" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
+            <state relative-caret-position="0">
+              <caret line="0" column="18" lean-forward="true" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
               <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#BuildAWorld#0;class#WorldGenerator#0" expanded="false" />
                 <element signature="class#Position#0;class#WorldGenerator#0" expanded="false" />
                 <element signature="class#Room#0;class#WorldGenerator#0" expanded="false" />
                 <element signature="method#pickStartPoint#0;class#WorldGenerator#0" expanded="false" />
@@ -104,20 +108,6 @@
                 <element signature="method#updateAvailableDoors#0;class#WorldGenerator#0" expanded="false" />
                 <element signature="method#addFirstRoom#0;class#WorldGenerator#0" expanded="false" />
                 <element signature="method#addOneMoreRoom#0;class#WorldGenerator#0" expanded="false" />
-                <element signature="method#putLockedDoor#0;class#WorldGenerator#0" expanded="false" />
-                <element signature="method#putPlayer#0;class#WorldGenerator#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/byog/Core/Utils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -148,6 +138,7 @@
       <find>floor</find>
       <find>determineDoorForNewRoomB</find>
       <find>System</find>
+      <find>== Tile</find>
     </findStrings>
     <replaceStrings>
       <replace>leftTop</replace>
@@ -181,10 +172,10 @@
         <option value="$PROJECT_DIR$/byog/Core/tests/WorldGenerator_test.java" />
         <option value="$PROJECT_DIR$/byog/Core/World.java" />
         <option value="$PROJECT_DIR$/byog/TileEngine/TETile.java" />
-        <option value="$PROJECT_DIR$/byog/Core/tests/Test_Game.java" />
-        <option value="$PROJECT_DIR$/byog/Core/Utils.java" />
         <option value="$PROJECT_DIR$/byog/Core/Game.java" />
         <option value="$PROJECT_DIR$/byog/Core/WorldGenerator.java" />
+        <option value="$PROJECT_DIR$/byog/Core/Utils.java" />
+        <option value="$PROJECT_DIR$/byog/Core/tests/Test_Game.java" />
       </list>
     </option>
   </component>
@@ -508,7 +499,7 @@
       <workItem from="1520042483538" duration="20862000" />
       <workItem from="1520267460595" duration="25000" />
       <workItem from="1520269132204" duration="10322000" />
-      <workItem from="1520310585526" duration="11300000" />
+      <workItem from="1520310585526" duration="14813000" />
     </task>
     <servers />
   </component>
@@ -533,7 +524,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86682000" />
+    <option name="totallyTimeSpent" value="90195000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -548,13 +539,14 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.297" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.297" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Style Checker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21309523" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -566,7 +558,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -597,7 +588,7 @@
           <folding>
             <element signature="method#pickStartPoint#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#chooseRoomToBeConnected#0;class#WorldGenerator#0" expanded="false" />
-            <element signature="e#3539#3545#0" expanded="false" />
+            <element signature="e#3504#3510#0" expanded="false" />
             <element signature="method#chooseDoorForNewRoom#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#determineTheSideOfNewRoom#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#determineDoorForNewRoomB#0;class#WorldGenerator#0" expanded="false" />
@@ -694,7 +685,7 @@
           <folding>
             <element signature="method#pickStartPoint#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#chooseRoomToBeConnected#0;class#WorldGenerator#0" expanded="false" />
-            <element signature="e#3539#3545#0" expanded="false" />
+            <element signature="e#3504#3510#0" expanded="false" />
             <element signature="method#chooseDoorForNewRoom#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#determineTheSideOfNewRoom#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#determineDoorForNewRoomB#0;class#WorldGenerator#0" expanded="false" />
@@ -747,7 +738,7 @@
           <folding>
             <element signature="method#pickStartPoint#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#chooseRoomToBeConnected#0;class#WorldGenerator#0" expanded="false" />
-            <element signature="e#3539#3545#0" expanded="false" />
+            <element signature="e#3504#3510#0" expanded="false" />
             <element signature="method#chooseDoorForNewRoom#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#determineTheSideOfNewRoom#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#determineDoorForNewRoomB#0;class#WorldGenerator#0" expanded="false" />
@@ -828,7 +819,7 @@
           <folding>
             <element signature="method#pickStartPoint#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#chooseRoomToBeConnected#0;class#WorldGenerator#0" expanded="false" />
-            <element signature="e#3539#3545#0" expanded="false" />
+            <element signature="e#3504#3510#0" expanded="false" />
             <element signature="method#chooseDoorForNewRoom#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#determineTheSideOfNewRoom#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#determineDoorForNewRoomB#0;class#WorldGenerator#0" expanded="false" />
@@ -974,14 +965,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/byog/TileEngine/Tileset.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="41" lean-forward="false" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Schedule.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1019,14 +1002,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/byog/Core/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="9" lean-forward="true" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/byog/TileEngine/TETile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1035,30 +1010,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/byog/Core/tests/Test_Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/byog/Core/tests/WorldGenerator_test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="54" column="29" lean-forward="false" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/byog/Core/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1075,9 +1030,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/byog/Core/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="9" lean-forward="true" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/byog/Core/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
+        <state relative-caret-position="371">
           <caret line="52" column="35" lean-forward="true" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1087,9 +1050,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/byog/Core/WorldGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="29" column="58" lean-forward="true" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
+        <state relative-caret-position="0">
+          <caret line="0" column="18" lean-forward="true" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
           <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#BuildAWorld#0;class#WorldGenerator#0" expanded="false" />
             <element signature="class#Position#0;class#WorldGenerator#0" expanded="false" />
             <element signature="class#Room#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#pickStartPoint#0;class#WorldGenerator#0" expanded="false" />
@@ -1105,8 +1070,34 @@
             <element signature="method#updateAvailableDoors#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#addFirstRoom#0;class#WorldGenerator#0" expanded="false" />
             <element signature="method#addOneMoreRoom#0;class#WorldGenerator#0" expanded="false" />
-            <element signature="method#putLockedDoor#0;class#WorldGenerator#0" expanded="false" />
-            <element signature="method#putPlayer#0;class#WorldGenerator#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/byog/Core/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1065">
+          <caret line="71" column="22" lean-forward="false" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/byog/TileEngine/Tileset.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="41" lean-forward="false" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/byog/Core/tests/Test_Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="10" lean-forward="false" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
