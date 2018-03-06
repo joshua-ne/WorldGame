@@ -1,11 +1,9 @@
-package byog.Core;
+package byog.Core.utils;
 
-import byog.TileEngine.TETile;
-import byog.Core.WorldGenerator.Position;
+import byog.Core.utils.WorldGenerator.Position;
 import byog.TileEngine.Tileset;
 
 import java.io.*;
-import java.sql.SQLSyntaxErrorException;
 
 public class Utils {
 

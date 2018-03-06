@@ -1,12 +1,11 @@
 package byog.Core.tests;
 
-import byog.Core.World;
-import byog.Core.WorldGenerator;
+import byog.Core.utils.World;
+import byog.Core.utils.WorldGenerator;
 import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class WorldGenerator_test extends WorldGenerator {

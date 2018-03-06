@@ -1,13 +1,16 @@
 package byog.Core;
 
+import byog.Core.utils.InputParser;
+import byog.Core.utils.World;
+import byog.Core.utils.WorldGenerator;
 import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
 
 import java.io.IOException;
 
-import static byog.Core.Utils.loadSavedWorld;
-import static byog.Core.Utils.playerMove;
-import static byog.Core.Utils.saveCurrentWorld;
+import static byog.Core.utils.Utils.loadSavedWorld;
+import static byog.Core.utils.Utils.playerMove;
+import static byog.Core.utils.Utils.saveCurrentWorld;
 
 public class Game {
     TERenderer ter = new TERenderer();

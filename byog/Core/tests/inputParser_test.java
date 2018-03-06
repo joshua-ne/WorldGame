@@ -1,7 +1,6 @@
 package byog.Core.tests;
 
-import byog.Core.InputParser;
-import org.junit.Assert;
+import byog.Core.utils.InputParser;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

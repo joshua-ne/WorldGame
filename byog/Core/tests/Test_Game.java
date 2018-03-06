@@ -14,7 +14,7 @@ public class Test_Game extends Game{
         Test_Game game = new Test_Game();
         ter.initialize(WIDTH, HEIGHT);
         //TETile[][] worldState = game.playWithInputString("N294899038592DDS:Q");
-        TETile[][] worldState = game.playWithInputString("LDDDDDDD");
+        TETile[][] worldState = game.playWithInputString("LWWWW");
         //System.out.println(TETile.toString(worldState));
         ter.renderFrame(worldState);
     }

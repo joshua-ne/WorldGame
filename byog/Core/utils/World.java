@@ -1,4 +1,4 @@
-package byog.Core;
+package byog.Core.utils;
 
 import byog.TileEngine.TETile;
 
