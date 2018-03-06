@@ -21,6 +21,7 @@ public class InputParser {
         Pattern p = Pattern.compile("[0-9]+");
         Matcher m =p.matcher(input);
         if (m.find()) return Long.parseLong(m.group(0));
+        else if (!isNew(input)) return 0;
         else throw new RuntimeException("Wrong input argument: no valid seed found!");
     }
 

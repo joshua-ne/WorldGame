@@ -16,18 +16,18 @@ public class WorldGenerator {
     public static  int AREA = WIDTH * HEIGHT;
     public static HashMap<Room, ArrayList<Position>> availableDoors = new HashMap<>();
     public static int occupiedArea;
-    private static Random RANDOM = new Random();
+    private static Random RANDOM;
 
 
-    public void BuildAWorld (long seed, TETile[][] world){
-        WIDTH = world.length;
-        HEIGHT = world[0].length;
+    public void BuildAWorld (long seed, World newWorld){
+        WIDTH = newWorld.worldMap.length;
+        HEIGHT = newWorld.worldMap[0].length;
         RANDOM = new Random(seed);
 
         // initialize tiles
         for (int x = 0; x < WIDTH; x += 1) {
             for (int y = 0; y < HEIGHT; y += 1) {
-                world[x][y] = Tileset.NOTHING;
+                newWorld.worldMap[x][y] = Tileset.NOTHING;
             }
         }
 
@@ -36,20 +36,20 @@ public class WorldGenerator {
         availableDoors = new HashMap<>();
 
         //pick a proper start position to start
-        Position startPoint = pickStartPoint(world);
+        Position startPoint = pickStartPoint(newWorld.worldMap);
 
         //place the first room at the start position and put the locked door
-        addFirstRoom(startPoint, world);
+        addFirstRoom(startPoint, newWorld.worldMap);
 
         while (availableDoors.size() > 0 ){
-            addOneMoreRoom(world);
+            addOneMoreRoom(newWorld.worldMap);
         }
-        putLockedDoor(world);
-        putPlayer(world);
+        putLockedDoor(newWorld);
+        putPlayer(newWorld);
 
     }
 
-    public static class Position {
+    public static class Position implements Serializable{
         public int x, y;
         public Position(){}
         public Position (int x, int y) {
@@ -373,28 +373,33 @@ public class WorldGenerator {
     }
 
     //putLockedDoor
-    public static void putLockedDoor(TETile[][] world) {
+    public static void putLockedDoor(World newWorld) {
 
         while (true) {
             int x = RANDOM.nextInt(WIDTH-2)+1;
             int y = RANDOM.nextInt(HEIGHT-2)+1;
-            if (world[x][y] != Tileset.WALL) continue;
-            Boolean accessible = (world[x+1][y] == Tileset.FLOOR || world[x-1][y] == Tileset.FLOOR ||world[x][y+1] == Tileset.FLOOR ||world[x][y-1] == Tileset.FLOOR);
+            if (newWorld.worldMap[x][y] != Tileset.WALL) continue;
+            Boolean accessible = (newWorld.worldMap[x+1][y] == Tileset.FLOOR || newWorld.worldMap[x-1][y] == Tileset.FLOOR ||newWorld.worldMap[x][y+1] == Tileset.FLOOR ||newWorld.worldMap[x][y-1] == Tileset.FLOOR);
             if (accessible) {
-                world[x][y] = Tileset.LOCKED_DOOR;
+                newWorld.worldMap[x][y] = Tileset.LOCKED_DOOR;
+                newWorld.lockedDoorPosition.x = x;
+                newWorld.lockedDoorPosition.y = y;
                 break;
             }
         }
     }
 
-    public static void putPlayer(TETile[][] world){
+    public static void putPlayer(World newWorld){
         while (true) {
             int x = RANDOM.nextInt(WIDTH-2)+1;
             int y = RANDOM.nextInt(HEIGHT-2)+1;
-            if (world[x][y] != Tileset.WALL) continue;
-            Boolean accessible = (world[x+1][y] == Tileset.FLOOR || world[x-1][y] == Tileset.FLOOR ||world[x][y+1] == Tileset.FLOOR ||world[x][y-1] == Tileset.FLOOR);
+            if (newWorld.worldMap[x][y] != Tileset.WALL) continue;
+            Boolean accessible = (newWorld.worldMap[x+1][y] == Tileset.FLOOR || newWorld.worldMap[x-1][y] == Tileset.FLOOR ||newWorld.worldMap[x][y+1] == Tileset.FLOOR ||newWorld.worldMap[x][y-1] == Tileset.FLOOR);
             if (accessible) {
-                world[x][y] = Tileset.PLAYER;
+                newWorld.worldMap[x][y] = Tileset.PLAYER;
+                newWorld.playerPosition.x = x;
+                newWorld.playerPosition.y = y;
+
                 break;
             }
         }

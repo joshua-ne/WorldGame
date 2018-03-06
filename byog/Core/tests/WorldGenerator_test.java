@@ -1,5 +1,6 @@
 package byog.Core.tests;
 
+import byog.Core.World;
 import byog.Core.WorldGenerator;
 import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
@@ -18,7 +19,8 @@ public class WorldGenerator_test extends WorldGenerator {
         ter.initialize(WIDTH, HEIGHT);
 
         // initialize tiles
-        TETile[][] world = new TETile[WIDTH][HEIGHT];
+        World newWorld = new World(WIDTH,HEIGHT);
+        TETile[][] world = newWorld.worldMap;
         for (int x = 0; x < WIDTH; x += 1) {
             for (int y = 0; y < HEIGHT; y += 1) {
                 world[x][y] = Tileset.NOTHING;
@@ -46,7 +48,7 @@ public class WorldGenerator_test extends WorldGenerator {
             System.out.println("number of available doors: " + availableDoors.size());
         }
 
-        putLockedDoor(world);
+        putLockedDoor(newWorld);
 
         System.out.println(roomNum + " rooms added to the world!");
         // draws the world to the screen

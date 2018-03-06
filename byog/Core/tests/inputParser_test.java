@@ -11,12 +11,12 @@ public class inputParser_test {
     public void test() {
 
         //test on isNew, saveOrNot, seed, moves
-        String input = "N2948938592WASDDWSASDWSAW";
+        String input = "LWASDDWSASDWSAW";
         InputParser p = new InputParser(input);
 
-        assertTrue(p.isNew);
+        assertFalse(p.isNew);
         assertFalse(p.saveOrNot);
-        assertEquals(p.seed, 2948938592L);
+        assertEquals(p.seed, 0);
         assertEquals(p.moves, "WASDDWSASDWSAW");
 
 

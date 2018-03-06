@@ -12,9 +12,17 @@ public class Main {
             System.out.println("Can only have one argument - the input string");
             System.exit(0);
         } else if (args.length == 1) {
+
             Game game = new Game();
-            TETile[][] worldState = game.playWithInputString(args[0]);
-            System.out.println(TETile.toString(worldState));
+            TETile[][] worldState;
+
+            try {
+                worldState = game.playWithInputString(args[0]);
+                System.out.println(TETile.toString(worldState));
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.exit(1);
+            }
         } else {
             Game game = new Game();
             game.playWithKeyboard();

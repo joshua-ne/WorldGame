@@ -3,6 +3,12 @@ package byog.Core;
 import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
 
+import java.io.IOException;
+
+import static byog.Core.Utils.loadSavedWorld;
+import static byog.Core.Utils.playerMove;
+import static byog.Core.Utils.saveCurrentWorld;
+
 public class Game {
     TERenderer ter = new TERenderer();
     /* Feel free to change the width and height. */
@@ -27,12 +33,33 @@ public class Game {
      * @param input the input string to feed to your program
      * @return the 2D TETile[][] representing the state of the world
      */
-    public TETile[][] playWithInputString(String input) {
+    public TETile[][] playWithInputString(String input) throws IOException, ClassNotFoundException {
         // TODO: Fill out this method to run the game using the input passed in,
         // and return a 2D tile representation of the world that would have been
         // drawn if the same inputs had been given to playWithKeyboard().
 
-        TETile[][] finalWorldFrame = null;
-        return finalWorldFrame;
+        //parse the input String (seed, moves, isNew, saveOrNot)
+        InputParser p = new InputParser(input);
+        WorldGenerator wg = new WorldGenerator();
+
+
+        if (p.isNew) {
+            //initialize the world with seed, make the moves and return the world (if saveOrNot == true, save the state)
+            World newWorld = new World(WIDTH, HEIGHT);
+            TETile[][] finalWorldFrame = newWorld.worldMap;
+            wg.BuildAWorld(p.seed, newWorld);
+            playerMove(p.moves, newWorld);
+            if (p.saveOrNot) saveCurrentWorld(newWorld);
+            return finalWorldFrame;
+
+        } else {
+            // load the previous world, make the move and return
+            World savedWorld;
+            savedWorld = loadSavedWorld();
+            TETile[][] finalWorldFrame = savedWorld.worldMap;
+            playerMove(p.moves, savedWorld);
+            if (p.saveOrNot) saveCurrentWorld(savedWorld);
+            return finalWorldFrame;
+        }
     }
 }
