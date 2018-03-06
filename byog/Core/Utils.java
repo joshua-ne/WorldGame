@@ -78,7 +78,7 @@ public class Utils {
     }
 
     public static void playerMove (String moves, World world){
-        System.out.println(moves);
+        //System.out.println(moves);
         for (int i = 0; i < moves.length(); i++) {
             Move(moves.charAt(i), world);
         }
